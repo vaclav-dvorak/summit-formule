@@ -5,7 +5,7 @@
         <v-layout align-start justify-center>
           <v-flex xs4 class="elevation-1 pa-3 ma-2">
             <v-card>
-              <v-toolbar color="red lighten-2">
+              <v-toolbar color="black" dark>
                 <v-toolbar-title>Roster</v-toolbar-title>
               </v-toolbar>
 
@@ -34,7 +34,7 @@
           <v-layout row wrap xs8 class="elevation-1 pa-3 ma-2">
             <v-flex v-for="(team, index) in teams" :key="index" xs6 class="">
               <v-card>
-                <v-toolbar color="blue lighten-1">
+                <v-toolbar :color="team.color">
                   <v-toolbar-title>{{ team.name }}</v-toolbar-title>
                 </v-toolbar>
                 <v-list two-line>
@@ -45,10 +45,8 @@
                   >
                     <template v-for="item in team.list">
                       <v-list-tile :key="item.id" avatar>
-                        <v-avatar color="red darken-2" class="mr-2">
-                          <span class="white--text headline">{{
-                            item.avatar
-                          }}</span>
+                        <v-avatar :color="team.color" class="mr-2">
+                          <span class="headline">{{ item.avatar }}</span>
                         </v-avatar>
                         <v-list-tile-content>
                           <v-list-tile-title>{{
@@ -106,11 +104,11 @@ export default {
         }
       ],
       teams: {
-        mercedes: { name: 'Mercedes', list: [] },
-        ferrari: { name: 'Ferrari', list: [] },
-        mclaren: { name: 'McLaren', list: [] },
-        williams: { name: 'Williams', list: [] },
-        renault: { name: 'Renault', list: [] }
+        mercedes: { name: 'Mercedes', list: [], color: 'blue-grey lighten-2' },
+        ferrari: { name: 'Ferrari', list: [], color: 'red lighten-1' },
+        mclaren: { name: 'McLaren', list: [], color: 'deep-orange lighten-1' },
+        williams: { name: 'Williams', list: [], color: 'light-blue lighten-4' },
+        renault: { name: 'Renault', list: [], color: 'yellow lighten-2' }
       }
     }
   }
