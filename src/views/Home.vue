@@ -1,75 +1,117 @@
 <template>
-  <div class="row">
-    <div class="col-3">
-      <h3>Draggable 1</h3>
-      <draggable class="list-group" :list="list1" group="people" @change="log">
-        <div
-          v-for="(element, index) in list1"
-          :key="element.name"
-          class="list-group-item"
-        >
-          {{ element.name }} {{ index }}
-        </div>
-      </draggable>
-    </div>
+  <v-app id="inspire">
+    <v-content>
+      <v-container fluid>
+        <v-layout align-start justify-center>
+          <v-flex xs4 class="elevation-1 pa-3 ma-2">
+            <v-card>
+              <v-toolbar color="red lighten-2">
+                <v-toolbar-title>Roster</v-toolbar-title>
+              </v-toolbar>
 
-    <div class="col-3">
-      <h3>Draggable 2</h3>
-      <draggable class="list-group" :list="list2" group="people" @change="log">
-        <div
-          v-for="(element, index) in list2"
-          :key="element.name"
-          class="list-group-item"
-        >
-          {{ element.name }} {{ index }}
-        </div>
-      </draggable>
-    </div>
-
-    <rawDisplayer class="col-3" :value="list1" title="List 1" />
-
-    <rawDisplayer class="col-3" :value="list2" title="List 2" />
-  </div>
+              <v-list>
+                <draggable
+                  v-model="items"
+                  :options="{ group: 'people' }"
+                  style="min-height: 10px"
+                >
+                  <template v-for="item in items">
+                    <v-list-tile :key="item.id" avatar>
+                      <v-avatar color="light-green darken-3" class="mr-2">
+                        <span class="white--text headline">{{
+                          item.avatar
+                        }}</span>
+                      </v-avatar>
+                      <v-list-tile-content>
+                        <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+                      </v-list-tile-content>
+                    </v-list-tile>
+                  </template>
+                </draggable>
+              </v-list>
+            </v-card>
+          </v-flex>
+          <v-layout row wrap xs8 class="elevation-1 pa-3 ma-2">
+            <v-flex v-for="(team, index) in teams" :key="index" xs6 class="">
+              <v-card>
+                <v-toolbar color="blue lighten-1">
+                  <v-toolbar-title>{{ team.name }}</v-toolbar-title>
+                </v-toolbar>
+                <v-list two-line>
+                  <draggable
+                    v-model="team.list"
+                    :options="{ group: 'people' }"
+                    style="min-height: 10px"
+                  >
+                    <template v-for="item in team.list">
+                      <v-list-tile :key="item.id" avatar>
+                        <v-avatar color="red darken-2" class="mr-2">
+                          <span class="white--text headline">{{
+                            item.avatar
+                          }}</span>
+                        </v-avatar>
+                        <v-list-tile-content>
+                          <v-list-tile-title>{{
+                            item.title
+                          }}</v-list-tile-title>
+                        </v-list-tile-content>
+                      </v-list-tile>
+                    </template>
+                  </draggable>
+                </v-list>
+              </v-card>
+            </v-flex>
+          </v-layout>
+        </v-layout>
+      </v-container>
+    </v-content>
+  </v-app>
 </template>
+
 <script>
 import draggable from 'vuedraggable'
 
 export default {
-  name: 'TwoLists',
-  display: 'Two Lists',
-  order: 1,
+  name: 'Home',
   components: {
     draggable
   },
   data() {
     return {
-      list1: [
-        { name: 'John', id: 1 },
-        { name: 'Joao', id: 2 },
-        { name: 'Jean', id: 3 },
-        { name: 'Gerard', id: 4 }
+      items: [
+        {
+          id: 1,
+          avatar: 'AA',
+          title: 'Adam'
+        },
+        {
+          id: 2,
+          avatar: 'PM',
+          title: 'Paja'
+        },
+        {
+          id: 3,
+          avatar: 'VD',
+          title: 'Vasik'
+        },
+        {
+          id: 4,
+          avatar: 'ZB',
+          title: 'Zdenda'
+        },
+        {
+          id: 5,
+          avatar: 'MP',
+          title: 'Martin'
+        }
       ],
-      list2: [
-        { name: 'Juan', id: 5 },
-        { name: 'Edgard', id: 6 },
-        { name: 'Johnson', id: 7 }
-      ]
-    }
-  },
-  methods: {
-    add: function() {
-      this.list.push({ name: 'Juan' })
-    },
-    replace: function() {
-      this.list = [{ name: 'Edgard' }]
-    },
-    clone: function(el) {
-      return {
-        name: el.name + ' cloned'
+      teams: {
+        mercedes: { name: 'Mercedes', list: [] },
+        ferrari: { name: 'Ferrari', list: [] },
+        mclaren: { name: 'McLaren', list: [] },
+        williams: { name: 'Williams', list: [] },
+        renault: { name: 'Renault', list: [] }
       }
-    },
-    log: function(evt) {
-      window.console.log(evt)
     }
   }
 }
