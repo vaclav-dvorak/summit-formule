@@ -103,13 +103,14 @@ export default {
           title: 'Martin'
         }
       ],
-      teams: {
-        mercedes: { name: 'Mercedes', list: [], color: 'blue-grey lighten-2' },
-        ferrari: { name: 'Ferrari', list: [], color: 'red lighten-1' },
-        mclaren: { name: 'McLaren', list: [], color: 'deep-orange lighten-1' },
-        williams: { name: 'Williams', list: [], color: 'light-blue lighten-4' },
-        renault: { name: 'Renault', list: [], color: 'yellow lighten-2' }
-      }
+      teams: [
+        { name: 'Mercedes', list: [], color: 'blue-grey lighten-3' },
+        { name: 'Ferrari', list: [], color: 'red lighten-1' },
+        { name: 'McLaren', list: [], color: 'deep-orange lighten-1' },
+        { name: 'Williams', list: [], color: 'light-blue lighten-4' },
+        { name: 'Renault', list: [], color: 'yellow lighten-2' },
+        { name: 'Red Bull Racing', list: [], color: 'grey darken-1' }
+      ]
     }
   }
 }
