@@ -12,7 +12,7 @@
               <v-list>
                 <draggable
                   v-model="items"
-                  :options="{ group: 'people' }"
+                  group="people"
                   style="min-height: 10px"
                 >
                   <template v-for="item in items">
@@ -40,8 +40,9 @@
                 <v-list two-line>
                   <draggable
                     v-model="team.list"
-                    :options="{ group: 'people' }"
+                    group="people"
                     style="min-height: 10px"
+                    @change="setStorageData"
                   >
                     <template v-for="item in team.list">
                       <v-list-tile :key="item.id" avatar>
@@ -76,7 +77,7 @@ export default {
   },
   data() {
     return {
-      items: [
+      dItems: [
         {
           id: 1,
           avatar: 'AA',
@@ -103,14 +104,33 @@ export default {
           title: 'Martin'
         }
       ],
-      teams: [
+      dTeams: [
         { name: 'Mercedes', list: [], color: 'blue-grey lighten-3' },
         { name: 'Ferrari', list: [], color: 'red lighten-1' },
         { name: 'McLaren', list: [], color: 'deep-orange lighten-1' },
         { name: 'Williams', list: [], color: 'light-blue lighten-4' },
         { name: 'Renault', list: [], color: 'yellow lighten-2' },
         { name: 'Red Bull Racing', list: [], color: 'grey darken-1' }
-      ]
+      ],
+      items: [],
+      teams: []
+    }
+  },
+  mounted() {
+    const data = this.getStorageData()
+    this.items = JSON.parse(data.items) || this.dItems
+    this.teams = JSON.parse(data.teams) || this.dTeams
+  },
+  methods: {
+    setStorageData() {
+      sessionStorage.setItem('items', JSON.stringify(this.items))
+      sessionStorage.setItem('teams', JSON.stringify(this.teams))
+    },
+    getStorageData() {
+      return {
+        items: sessionStorage.getItem('items'),
+        teams: sessionStorage.getItem('teams')
+      }
     }
   }
 }
