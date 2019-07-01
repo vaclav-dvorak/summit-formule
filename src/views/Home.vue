@@ -3,7 +3,7 @@
     <v-content>
       <v-container fluid>
         <v-layout align-start justify-center>
-          <v-flex xs4 class="elevation-1 pa-3 ma-2">
+          <!-- <v-flex xs4 class="elevation-1 pa-3 ma-2">
             <v-card>
               <v-toolbar color="black" dark>
                 <v-toolbar-title>Roster</v-toolbar-title>
@@ -30,9 +30,9 @@
                 </draggable>
               </v-list>
             </v-card>
-          </v-flex>
-          <v-layout row wrap xs8 class="elevation-1 pa-3 ma-2">
-            <v-flex v-for="(team, index) in teams" :key="index" xs6 class="">
+          </v-flex> -->
+          <v-layout row wrap xs12 class="elevation-1 pa-3 ma-2">
+            <v-flex v-for="(team, index) in teams" :key="index" xs4 class="">
               <v-card>
                 <v-toolbar :color="team.color">
                   <v-toolbar-title>{{ team.name }}</v-toolbar-title>
@@ -86,12 +86,12 @@ export default {
         {
           id: 2,
           avatar: 'PM',
-          title: 'Paja'
+          title: 'Pavlínka'
         },
         {
           id: 3,
           avatar: 'VD',
-          title: 'Vasik'
+          title: 'Vašík'
         },
         {
           id: 4,
@@ -102,6 +102,56 @@ export default {
           id: 5,
           avatar: 'MP',
           title: 'Martin'
+        },
+        {
+          id: 6,
+          avatar: 'LN',
+          title: 'Novas'
+        },
+        {
+          id: 7,
+          avatar: 'MV',
+          title: 'Marcel'
+        },
+        {
+          id: 8,
+          avatar: 'VT',
+          title: 'Vadim'
+        },
+        {
+          id: 9,
+          avatar: 'VS',
+          title: 'Vojta'
+        },
+        {
+          id: 10,
+          avatar: 'JH',
+          title: 'Jan H.'
+        },
+        {
+          id: 11,
+          avatar: 'OB',
+          title: 'Ondra B.'
+        },
+        {
+          id: 12,
+          avatar: 'JJ',
+          title: 'Kuba'
+        },
+        {
+          id: 13,
+          avatar: 'JK',
+          title: 'Jirka K.'
+        },
+        {
+          id: 14,
+          avatar: 'TK',
+          title: 'Tomáš'
+        },
+        {
+          id: 15,
+          avatar: 'VV',
+          title: 'Viky'
         }
       ],
       dTeams: [
@@ -109,8 +159,7 @@ export default {
         { name: 'Ferrari', list: [], color: 'red lighten-1' },
         { name: 'McLaren', list: [], color: 'deep-orange lighten-1' },
         { name: 'Williams', list: [], color: 'light-blue lighten-4' },
-        { name: 'Renault', list: [], color: 'yellow lighten-2' },
-        { name: 'Red Bull Racing', list: [], color: 'grey darken-1' }
+        { name: 'Renault', list: [], color: 'yellow lighten-2' }
       ],
       items: [],
       teams: []
