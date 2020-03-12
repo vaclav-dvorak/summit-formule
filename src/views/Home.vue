@@ -3,7 +3,7 @@
     <v-content>
       <v-container fluid>
         <v-layout align-start justify-center>
-          <!-- <v-flex xs4 class="elevation-1 pa-3 ma-2">
+          <v-flex xs4 class="elevation-1 pa-3 ma-2">
             <v-card>
               <v-toolbar color="black" dark>
                 <v-toolbar-title>Roster</v-toolbar-title>
@@ -30,7 +30,7 @@
                 </draggable>
               </v-list>
             </v-card>
-          </v-flex> -->
+          </v-flex>
           <v-layout row wrap xs12 class="elevation-1 pa-3 ma-2">
             <v-flex v-for="(team, index) in teams" :key="index" xs4 class="">
               <v-card>
